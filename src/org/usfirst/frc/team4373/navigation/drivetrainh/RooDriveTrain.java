@@ -40,7 +40,7 @@ public class RooDriveTrain {
 		//this function will take that result and multiply it by percentage foreward power in an attempt
 		double motorPower;
 		motorPower = 1 - Math.pow(rightAxis, 2);
-		motorPower = TANK_STRAFE_SPEED_RATIO * Math.sqrt(motorPower);
+		motorPower = (TANK_STRAFE_SPEED_RATIO-1) * Math.sqrt(motorPower);
 		motorPower += 1;
 		motorPower *= forewardAxis;
 		return motorPower;
