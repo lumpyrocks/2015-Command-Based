@@ -34,7 +34,7 @@ public class RooDriveTrain {
 		return (angle*360)/255;
 	}
 	
-	double tankPowerFromAxes (double forewardAxis, double rightAxis){
+	static double tankPowerFromAxes (double forwardAxis, double rightAxis){
 		//at full forewards power, I think the shape we're looking for in terms of variation with the right axis
 		//is a semi-elipse following the equation y=.509sqrt(1-xx) + 1
 		//this function will take that result and multiply it by percentage foreward power in an attempt
@@ -42,7 +42,12 @@ public class RooDriveTrain {
 		motorPower = 1 - Math.pow(rightAxis, 2);
 		motorPower = (TANK_STRAFE_SPEED_RATIO-1) * Math.sqrt(motorPower);
 		motorPower += 1;
-		motorPower *= forewardAxis;
+		
+		//here we multiply be the forward power so that we can go not full steam ahead
+		motorPower *= forwardAxis;
+		
+		//now to get it back under 1
+		motorPower /= TANK_STRAFE_SPEED_RATIO;
 		return motorPower;
 	}
 }
