@@ -50,4 +50,8 @@ public class RooDriveTrain {
 		motorPower /= TANK_STRAFE_SPEED_RATIO;
 		return motorPower;
 	}
+	
+	static double robotwiseForwardMagnitudeFromFieldwise (double forwardAxis, double rightAxis, double gyro){
+		
+	}
 }
